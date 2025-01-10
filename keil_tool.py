@@ -10,7 +10,6 @@ keil_tool.h
 
 import os
 import re
-from prettytable import PrettyTable
 from pathlib import Path
 from lxml import etree
 from lxml.etree import _Element
