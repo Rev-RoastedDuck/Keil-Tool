@@ -31,6 +31,7 @@ class KeilTool:
         for file_path in current_dir.rglob("*.uvprojx"):
             uvprojx_files.append(str(file_path.relative_to(current_dir)))
         if not len(uvprojx_files) == 1:
+            print("Keil-Tool: 请检查当前文件夹是否不存在或存在多个.uvprojx文件")
             return ""
         self.uvprojx_path = uvprojx_files[0]
         return uvprojx_files[0]
@@ -311,6 +312,7 @@ def manual(language: str = None):
 
 
 def main():
+    manual()
     tool = KeilTool()
     g_file_path = tool.find_uvprojx_files()
     tool.get_root(g_file_path)
@@ -357,7 +359,7 @@ def main():
                 func(*params)
 
         except IndexError:
-            print("输入格式错误，请输入正确的指令和参数。")
+            print("Keil-Tool: 输入格式错误，输入`help`或`help en`查看帮助文档。")
         except ZeroDivisionError as e:
             print(e)
 
